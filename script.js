@@ -20,10 +20,12 @@ function getMovies(url) {
         });
 }
 
+
+
 function showMovies(data) {
     main.innerHTML = "";
     data.forEach(movie => {
-        const { title, poster_path, vote_average, overview } = movie;
+        const { title, poster_path, vote_average, overview, genre_ids} = movie;
         const movieEl = document.createElement('div');
         movieEl.classList.add('movie');
         movieEl.innerHTML = `
@@ -31,6 +33,7 @@ function showMovies(data) {
             <div class="movie-info">
                 <h3>${title}</h3>
                 <span class="${getcolor(vote_average)}">${vote_average}</span>
+                <span class="genre">${getGenre(genre_ids[0])}</span>
             </div>
             <div class="movie-des">
                 <p>${overview}</p>
@@ -48,6 +51,50 @@ function getcolor(vote) {
     else
         return 'red';
 }
+
+function getGenre(genre) {
+    if (genre === 28)
+    return 'Action';
+    else if (genre === 12)
+    return 'Adventure';
+    else if (genre === 16)
+    return 'Animation';
+    else if (genre === 35)
+    return 'Comedy';
+    else if (genre === 80)
+    return 'Crime';
+    else if (genre === 99)
+    return 'Documentary';
+    else if (genre === 18)
+    return 'Drama';
+    else if (genre === 10751)
+    return 'Family';
+    else if (genre === 14)
+    return 'Fantasy';
+    else if (genre === 36)
+    return 'History';
+    else if (genre === 27)
+    return 'Horror';
+    else if (genre === 10402)
+    return 'Music';
+    else if (genre === 9648)
+    return 'Mystery';
+    else if (genre === 10749)
+    return 'Romance';
+    else if (genre === 878)
+    return 'Science Fiction';
+    else if (genre === 10770)
+    return 'TV Movie';
+    else if (genre === 53)
+    return 'Thriller';
+    else if (genre === 10752)
+    return 'War';
+    else if (genre === 37)
+    return 'Western';
+    else
+    return 'Unknown Genre';
+    }
+
 
 form.addEventListener('submit', (event) => {
     event.preventDefault();
